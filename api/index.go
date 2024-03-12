@@ -148,7 +148,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, viewPage)
 }
 
-func handlePPPCounter(w http.ResponseWriter, r *http.Request) {
+func HandlePPPCounter(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("start-Handler!")
 	// POSTされたパラメータを取得する

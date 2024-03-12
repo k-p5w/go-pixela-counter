@@ -6,7 +6,6 @@ import (
 
 	"github.com/gorilla/mux"
 	counter "github.com/k-p5w/go-pixela-counter/api"
-
 )
 
 func main() {
@@ -20,7 +19,7 @@ func main() {
 	// http.Handle("/", http.StripPrefix("/public/", fs))
 
 	router := mux.NewRouter()
-	router.HandleFunc("/api/ppppCounter", counter.handlePPPCounter)
+	router.HandleFunc("/api/ppppCounter", counter.HandlePPPCounter)
 
 	err := http.ListenAndServe(":3000", router)
 	if err != nil {
