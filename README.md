@@ -15,4 +15,6 @@ https://go-pixela-counter.vercel.app
 
 https://go-pixela-counter.vercel.app/api/ppppCounter
 
-https://go-pixela-counter.vercel.app/api/ppppCounter=
+https://go-pixela-counter.vercel.app/api/ppppCounter?incrementValue=-3&type=20240308
+
+https://go-pixela-counter.vercel.app/ppppCounter?incrementValue=-3&type=20240308

@@ -20,7 +20,7 @@ func main() {
 
 	router := mux.NewRouter()
 	router.HandleFunc("/api/ppppCounter", counter.HandlePPPCounter)
-
+	http.HandleFunc("/ppppCounter", counter.Handler)
 	err := http.ListenAndServe(":3000", router)
 	if err != nil {
 		fmt.Println("Failed to start server:", err)
