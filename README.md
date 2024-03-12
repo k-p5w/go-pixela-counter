@@ -10,3 +10,7 @@ http://localhost:9999/public/pppp_counter.html
 ## WEBアプリにアクセス
 
 https://go-pixela-counter.vercel.app
+
+### ここからアクセス
+
+https://go-pixela-counter.vercel.app/api/ppppCounter
