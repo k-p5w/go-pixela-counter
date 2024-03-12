@@ -73,6 +73,7 @@ func putPoint(usr string, pwd string, url string, pointDATE string, pointQTY str
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 
+	fmt.Println("start-Handler!")
 	// POSTされたパラメータを取得する
 	regVal := r.FormValue("incrementValue")
 	// // 文字列を float64 型に変換

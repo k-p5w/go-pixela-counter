@@ -20,7 +20,7 @@ func main() {
 
 	http.HandleFunc("/ppppCounter", counter.Handler)
 	// http.HandleFunc("/view", widget.Handler)
-	// http.HandleFunc("/", widget.Handler)
+	http.HandleFunc("/", counter.Handler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -28,6 +28,6 @@ func main() {
 	}
 
 	// 起動する
-	// http.ListenAndServe(":"+port, nil)
-	http.ListenAndServe("localhost:"+port, nil)
+	http.ListenAndServe(":"+port, nil)
+	// http.ListenAndServe("localhost:"+port, nil)
 }
