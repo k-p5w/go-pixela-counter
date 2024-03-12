@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="./mvp.css">
     <title>papipupepopoko counter</title>
     <style>
-   
-
-        .calendar {
+        /* .calendar {
             width: 300px;
             margin: auto;
             text-align: center;
             display: flex;
-        }
+        } */
 
         table {
-            width: 100%;
+            /* width: 100%; */
             border-collapse: collapse;
         }
 
@@ -39,63 +37,88 @@
 </head>
 
 <body>
+    <header>
+
+
+        <h1>舌打ちカウンター</h1>
+    </header>
+
     <main>
 
-
         <section>
-            <div class="calendar">
-                <form class="fetchForm">
-                    <p>
-                        <label for="incrementValue">増減値
-                            <input type="number" name="incrementValue" id="incrementValue" value="1" max="9">
-                        </label>
-                    </p>
-                    <label for="selectedDate">入力日
-                        <input type="text" id="selectedDate" name="selectedDate" readonly>
-                        <input type="hidden" id="selectedMonth" name="selectedMonth">
+
+            <!-- <form class="fetchForm"> -->
+            <form class="fetchForm" onsubmit="this.querySelector('.btn').disabled = true;">
+
+                <p>
+                    <label for="incrementValue">増減値
+
+                        <input type="number" name="incrementValue" id="incrementValue" value="1" max="9">
                     </label>
+                </p>
+                <label for="selectedDate">入力日
+                    <input type="text" id="selectedDate" name="selectedDate" readonly>
+                    <input type="hidden" id="selectedMonth" name="selectedMonth">
+                </label>
 
-                    <input type="button" value="送信" class="btn"></p>
-                    <p>増減値が1なら1つ増えて、-1なら減らします</p>
-                </form>
+
+                <button type="button" class="btn">確定</button>
+            </form>
 
 
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="7">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <button onclick="previousMonth()">&lt;</button>
-                                    <div id="currentMonthYear"></div>
-                                    <button onclick="nextMonth()">&gt;</button>
-                                </div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>日</th>
-                            <th>月</th>
-                            <th>火</th>
-                            <th>水</th>
-                            <th>木</th>
-                            <th>金</th>
-                            <th>土</th>
-                        </tr>
-                    </thead>
-                    <tbody id="calendarBody"></tbody>
-                </table>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="7">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <button onclick="previousMonth()">&lt;</button>
+                                <div id="currentMonthYear"></div>
+                                <button onclick="nextMonth()">&gt;</button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>日</th>
+                        <th>月</th>
+                        <th>火</th>
+                        <th>水</th>
+                        <th>木</th>
+                        <th>金</th>
+                        <th>土</th>
+                    </tr>
+                </thead>
+                <tbody id="calendarBody"></tbody>
+            </table>
+            //増減値が正の数なら濃くなって、負の数なら薄くなります。
         </section>
     </main>
-    <script src="fetch.js"></script>
-    <!-- <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg" alt="PPP SVG" width="500"> -->
 
-    <div style="display: flex; justify-content: center; align-items: center;">
+    <script src="./fetch.js"></script>
 
-        <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500"
-            width="720" frameborder="0"></iframe>
-    </div>
+    <section>
+        <div style="display: flex; justify-content: center; align-items: center;">
 
+            <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500"
+                width="720" frameborder="0"></iframe>
+
+                <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg?mode=line" alt="PPP SVG"
+                width="500">
+        </div>
+        <div>
+        
+        </div>
+    </section>
+    <article>
+        グラフ確認用URL(1.色の濃淡/2.折れ線)
+ 
+        <ul>
+            <p>https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg</p>
+        </ul>
+        <ul>
+            <p>https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg?mode=line</p>
+        </ul>
+    </article>
     <script>
 
 

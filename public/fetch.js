@@ -37,8 +37,11 @@ const postFetch = () => {
         return response.json();
     }).then((data) => {
         console.log(data);
+        // フォームの値をクリア
+        fetchForm.reset();
     }).catch((error) => {
         console.log(error);
     });
 };
+// データ送信
 btn.addEventListener('click', postFetch, false);
