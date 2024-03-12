@@ -1,14 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
-	counter "go-pixela-counter/api"
+	counter "github.com/k-p5w/go-pixela-counter/api"
 )
 
 func main() {
 
+	fmt.Println("start!")
 	// これで静的ファイルにアクセスできるとおもったのになあ
 	fs := http.FileServer(http.Dir("public"))
 	// http.Handle("/tool/", http.StripPrefix("/tool/", fs))
@@ -26,6 +28,6 @@ func main() {
 	}
 
 	// 起動する
-	http.ListenAndServe(":"+port, nil)
-	// http.ListenAndServe("localhost:"+port, nil)
+	// http.ListenAndServe(":"+port, nil)
+	http.ListenAndServe("localhost:"+port, nil)
 }

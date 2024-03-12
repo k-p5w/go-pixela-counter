@@ -17,7 +17,7 @@ const (
 	// popocounter-sample/pppp20221221/popo-tsk-sample
 	// pppp-fan/pppp20240312/popo-tsk-counter
 	graphName = "popo-tsk-counter"
-	inputURL  = "https://go-stream-widget.vercel.app/widget/pppp_counter.html"
+	inputURL  = "https://go-pixela-counter.vercel.app/"
 	// put
 	pointAdd      = "https://pixe.la/v1/users/%v/graphs/%v/add"
 	pointSet      = "https://pixe.la/v1/users/%v/graphs/%v"

@@ -1,4 +1,8 @@
 # go-pixela-counter
 
 
-go mod init github.com/k-p5w/go-pixela-counter
+http://localhost:9999/pppp_counter.html
+
+## 静的ファイルにアクセス
+
+http://localhost:9999/public/pppp_counter.html
