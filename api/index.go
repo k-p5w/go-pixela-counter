@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // 設定用定数
@@ -150,7 +152,12 @@ func handlePPPCounter(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("start-Handler!")
 	// POSTされたパラメータを取得する
-	regVal := r.FormValue("incrementValue")
+
+	vars := mux.Vars(r)
+	regVal := vars["incrementValue"]
+	regYmd := vars["selectedDate"]
+	fmt.Println("Received date:", regVal, regYmd)
+
 	// // 文字列を float64 型に変換
 	// incrementValue, err := strconv.ParseFloat(regVal, 64)
 	// if err != nil {
@@ -158,7 +165,7 @@ func handlePPPCounter(w http.ResponseWriter, r *http.Request) {
 	// 	http.Error(w, "Failed to parse incrementValue: "+err.Error(), http.StatusBadRequest)
 	// 	return
 	// }
-	regYmd := r.FormValue("selectedDate")
+
 	putPoint(usrID, usrPWD, pointSet, regYmd, regVal)
 	graphURL := fmt.Sprintf(graphURLorg, usrID, graphName)
 	fmt.Printf("%v\n%v\n%v\n%v\n%v \n", usrID, usrPWD, pointSet, regYmd, regVal)
