@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	fmt.Println("start!")
+	fmt.Println("start!!")
 	// // これで静的ファイルにアクセスできるとおもったのになあ
 	// fs := http.FileServer(http.Dir("public"))
 	// // http.Handle("/tool/", http.StripPrefix("/tool/", fs))
