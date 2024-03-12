@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./mvp.css">
     <title>papipupepopoko counter</title>
     <style>
+   
+
         .calendar {
             width: 300px;
             margin: auto;
             text-align: center;
+            display: flex;
         }
 
         table {
@@ -35,62 +39,61 @@
 </head>
 
 <body>
+    <main>
 
-    <div class="calendar">
-        <form id="dateForm" method="get" action="/api/ppppCounter">
 
-            <label for="incrementValue">増減値
-                <input type="number" name="incrementValue" id="incrementValue" value="1" max="9">
-            </label>
-            <label for="selectedDate">入力日
-                <input type="text" id="selectedDate" name="selectedDate" readonly>
-                <input type="hidden" id="selectedMonth" name="selectedMonth">
-            </label>
-            <p> <button type="submit">登録</button></p>
-            <p>増減値が1なら1つ増えて、-1なら減らします</p>
-        </form>
-        <script>
-            const formValue = document.getElementById('incrementValue');
-            const formDate = document.getElementById('selectedDate');
-            const submitButton = document.getElementById('submitButton');
-          
-            submitButton.addEventListener('click', () => {
-              const val = formValue.value;
-              const date = formDate.value;
-              const url = new URL('/api/ppppCounter', window.location.href);
-              url.searchParams.set('incrementValue', val);
-              url.searchParams.set('selectedDate', date);
-          
-              window.location.href = url.toString();
-            });
-          </script>
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="7">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <button onclick="previousMonth()">&lt;</button>
-                            <div id="currentMonthYear"></div>
-                            <button onclick="nextMonth()">&gt;</button>
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <th>日</th>
-                    <th>月</th>
-                    <th>火</th>
-                    <th>水</th>
-                    <th>木</th>
-                    <th>金</th>
-                    <th>土</th>
-                </tr>
-            </thead>
-            <tbody id="calendarBody"></tbody>
-        </table>
+        <section>
+            <div class="calendar">
+                <form class="fetchForm">
+                    <p>
+                        <label for="incrementValue">増減値
+                            <input type="number" name="incrementValue" id="incrementValue" value="1" max="9">
+                        </label>
+                    </p>
+                    <label for="selectedDate">入力日
+                        <input type="text" id="selectedDate" name="selectedDate" readonly>
+                        <input type="hidden" id="selectedMonth" name="selectedMonth">
+                    </label>
 
-        <!-- <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg" alt="PPP SVG" width="500"> -->
+                    <input type="button" value="送信" class="btn"></p>
+                    <p>増減値が1なら1つ増えて、-1なら減らします</p>
+                </form>
 
-        <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500" width="720" frameborder="0"></iframe>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="7">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <button onclick="previousMonth()">&lt;</button>
+                                    <div id="currentMonthYear"></div>
+                                    <button onclick="nextMonth()">&gt;</button>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>日</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="fetch.js"></script>
+    <!-- <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg" alt="PPP SVG" width="500"> -->
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+
+        <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500"
+            width="720" frameborder="0"></iframe>
     </div>
 
     <script>

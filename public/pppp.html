@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -37,7 +37,7 @@
 <body>
 
     <div class="calendar">
-        <form id="dateForm" method="get" action="/api/ppppCounter">
+        <form id="dateForm" method="post" action="">
 
             <label for="incrementValue">増減値
                 <input type="number" name="incrementValue" id="incrementValue" value="1" max="9">
@@ -46,52 +46,92 @@
                 <input type="text" id="selectedDate" name="selectedDate" readonly>
                 <input type="hidden" id="selectedMonth" name="selectedMonth">
             </label>
-            <p> <button type="submit">登録</button></p>
+            <p> <button type="submit" id="submitButton">登録</button></p>
             <p>増減値が1なら1つ増えて、-1なら減らします</p>
         </form>
         <script>
+            // window.alert("start!");
             const formValue = document.getElementById('incrementValue');
             const formDate = document.getElementById('selectedDate');
             const submitButton = document.getElementById('submitButton');
-          
+
             submitButton.addEventListener('click', () => {
-              const val = formValue.value;
-              const date = formDate.value;
-              const url = new URL('/api/ppppCounter', window.location.href);
-              url.searchParams.set('incrementValue', val);
-              url.searchParams.set('selectedDate', date);
-          
-              window.location.href = url.toString();
+
+                const inputQty = formValue.value;
+                const inputDate = formDate.value;
+                const userName = "pppp-fan"; // ユーザ名
+                const graphId = "popo-tsk-counter"; // グラフID
+                const userToken = "pppp20240312";
+                const dataBody = {
+                    date: inputDate,
+                    quantity: inputQty
+                };
+                // window.alert(JSON.stringify(dataBody));
+                // Convert data object to JSON string
+
+                const POST_URL = `https://pixe.la/v1/users/${userName}/graphs/${graphId}`; // POST-URL
+
+                xhr.open('POST', url);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('X-USER-TOKEN', userToken);
+
+                const data = {
+                    quantity: inputQty,
+                    date: inputDate
+                };
+
+                const jsonData = JSON.stringify(data);
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        console.log('送信成功');
+                    } else {
+                        console.error('送信失敗:', xhr.statusText);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('送信エラー');
+                };
+
+                // ここで送信？
+                xhr.send(jsonData);
             });
-          </script>
+
+            // Rest of your calendar script here
+        </script>
         <table>
-            <thead>
-                <tr>
-                    <th colspan="7">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <button onclick="previousMonth()">&lt;</button>
-                            <div id="currentMonthYear"></div>
-                            <button onclick="nextMonth()">&gt;</button>
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <th>日</th>
-                    <th>月</th>
-                    <th>火</th>
-                    <th>水</th>
-                    <th>木</th>
-                    <th>金</th>
-                    <th>土</th>
-                </tr>
-            </thead>
-            <tbody id="calendarBody"></tbody>
         </table>
-
-        <!-- <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg" alt="PPP SVG" width="500"> -->
-
-        <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500" width="720" frameborder="0"></iframe>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="7">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <button onclick="previousMonth()">&lt;</button>
+                        <div id="currentMonthYear"></div>
+                        <button onclick="nextMonth()">&gt;</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+            </tr>
+        </thead>
+        <tbody id="calendarBody"></tbody>
+    </table>
+
+    <!-- <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg" alt="PPP SVG" width="500"> -->
+
+    <!-- <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500"
+        width="720" frameborder="0"></iframe>
+    </div> -->
 
     <script>
 
