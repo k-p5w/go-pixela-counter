@@ -145,3 +145,78 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w, viewPage)
 }
+
+func handlePPPCounter(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("start-Handler!")
+	// POSTされたパラメータを取得する
+	regVal := r.FormValue("incrementValue")
+	// // 文字列を float64 型に変換
+	// incrementValue, err := strconv.ParseFloat(regVal, 64)
+	// if err != nil {
+	// 	// 変換に失敗した場合
+	// 	http.Error(w, "Failed to parse incrementValue: "+err.Error(), http.StatusBadRequest)
+	// 	return
+	// }
+	regYmd := r.FormValue("selectedDate")
+	putPoint(usrID, usrPWD, pointSet, regYmd, regVal)
+	graphURL := fmt.Sprintf(graphURLorg, usrID, graphName)
+	fmt.Printf("%v\n%v\n%v\n%v\n%v \n", usrID, usrPWD, pointSet, regYmd, regVal)
+	/*
+		                       https://pixe.la/v1/users/popocounter-sample/graphs/popo-tsk-sample
+				$ curl -X POST https://pixe.la/v1/users/popocounter-sample/graphs/popo-tsk-sample -H 'X-USER-TOKEN:pppp20221221' -d '{"date":"20240312","quantity":"3"}'
+	*/
+
+	// if incrementValue > 0 {
+	// 	pointSet
+
+	// 	putPoint(usrID, usrPWD, pointAdd, regYmd, strconv.Itoa(int(math.Abs(incrementValue))))
+	// } else {
+	// 	putPoint(usrID, usrPWD, pointSubtract, regYmd, strconv.Itoa(int(math.Abs(incrementValue))))
+	// }
+	// // 取得したパラメータを出力する
+	// fmt.Fprintf(w, "param1: %v\n", regVal)
+	// fmt.Fprintf(w, "param2: %v\n", regYmd)
+
+	// HTMLの描画
+	viewPage := fmt.Sprintf(`	<!DOCTYPE html>
+	<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舌打ちチェッカー</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #fff;
+    }
+    .dot-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+      margin: 1px;
+    }
+    .dot-filled {
+      background-color: #000;
+    }
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<img src="%v" alt="PPP SVG">
+<a href="%v">舌打ち登録画面へ</a>
+</body>
+</html>	`, graphURL, inputURL)
+
+	fmt.Fprint(w, viewPage)
+}
