@@ -14,3 +14,5 @@ https://go-pixela-counter.vercel.app
 ### ここからアクセス
 
 https://go-pixela-counter.vercel.app/api/ppppCounter
+
+https://go-pixela-counter.vercel.app/api/ppppCounter=

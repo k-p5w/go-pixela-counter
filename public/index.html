@@ -49,7 +49,21 @@
             <p> <button type="submit">登録</button></p>
             <p>増減値が1なら1つ増えて、-1なら減らします</p>
         </form>
-
+        <script>
+            const formValue = document.getElementById('incrementValue');
+            const formDate = document.getElementById('selectedDate');
+            const submitButton = document.getElementById('submitButton');
+          
+            submitButton.addEventListener('click', () => {
+              const val = formValue.value;
+              const date = formDate.value;
+              const url = new URL('/api/ppppCounter', window.location.href);
+              url.searchParams.set('incrementValue', val);
+              url.searchParams.set('selectedDate', date);
+          
+              window.location.href = url.toString();
+            });
+          </script>
         <table>
             <thead>
                 <tr>

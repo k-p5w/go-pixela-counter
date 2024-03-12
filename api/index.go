@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 // 設定用定数
@@ -152,10 +150,12 @@ func HandlePPPCounter(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("start-Handler!")
 	// POSTされたパラメータを取得する
-
-	vars := mux.Vars(r)
-	regVal := vars["incrementValue"]
-	regYmd := vars["selectedDate"]
+	q := r.URL.Query()
+	regVal := q.Get("incrementValue")
+	regYmd := q.Get("selectedDate")
+	// vars := mux.Vars(r)
+	// regVal := vars["incrementValue"]
+	// regYmd := vars["selectedDate"]
 	fmt.Println("Received date:", regVal, regYmd)
 
 	// // 文字列を float64 型に変換
