@@ -40,13 +40,25 @@
     <header>
 
 
-        <h1>舌打ちカウンター</h1>
+        <h1>ぽぽこの舌打ちカウンター</h1>
+        <P>
+            <mark>舌打ち</mark>が多いと色が濃くなって、少ないと薄くなります。
+        </P>
+
+
     </header>
 
     <main>
 
         <section>
-
+            <aside>
+                <h3>
+                    使い方
+                </h3>
+                1️⃣増やしたい・減らしたい数をセット.
+                2️⃣登録したい日付を選択.
+                3️⃣確定で登録.</P>
+            </aside>
             <!-- <form class="fetchForm"> -->
             <form class="fetchForm" onsubmit="this.querySelector('.btn').disabled = true;">
 
@@ -90,28 +102,37 @@
                 </thead>
                 <tbody id="calendarBody"></tbody>
             </table>
-            //増減値が正の数なら濃くなって、負の数なら薄くなります。
+
+
+            <!-- //手順3は25%の確率で失敗します -->
         </section>
     </main>
 
     <script src="./fetch.js"></script>
 
     <section>
-        <div style="display: flex; justify-content: center; align-items: center;">
 
-            <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short" height="500"
-                width="720" frameborder="0"></iframe>
+        <aside>
 
+            - 色の濃淡グラフ
+            <div style="display: flex; justify-content: center; align-items: center;">
+
+                <iframe src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.html?mode=simple-short"
+                    height="500" width="720" frameborder="0"></iframe>
+            </div>
+        </aside>
+        <aside>
+            <div>
+                - 折れ線グラフ
                 <img src="https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg?mode=line" alt="PPP SVG"
-                width="500">
-        </div>
-        <div>
-        
-        </div>
+                    width="500">
+
+            </div>
+        </aside>
     </section>
     <article>
         グラフ確認用URL(1.色の濃淡/2.折れ線)
- 
+
         <ul>
             <p>https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg</p>
         </ul>

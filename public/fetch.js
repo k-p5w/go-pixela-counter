@@ -39,8 +39,11 @@ const postFetch = () => {
         console.log(data);
         // フォームの値をクリア
         fetchForm.reset();
+        // 成功したらHTMLをリロード
+        // window.location.reload();
     }).catch((error) => {
         console.log(error);
+        // postFetch();
     });
 };
 // データ送信
