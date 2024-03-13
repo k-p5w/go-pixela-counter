@@ -8,6 +8,7 @@ import (
 	counter "github.com/k-p5w/go-pixela-counter/api"
 )
 
+// メイン関数
 func main() {
 
 	fmt.Println("start!!")
