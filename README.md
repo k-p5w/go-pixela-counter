@@ -13,13 +13,14 @@ https://go-pixela-counter.vercel.app
 
 ### ここからアクセス
 
-https://go-pixela-counter.vercel.app/api/ppppCounter
+https://go-pixela-counter.vercel.app/pppp_counter.html
 
 https://go-pixela-counter.vercel.app/api/ppppCounter?incrementValue=-3&type=20240308
 
 https://go-pixela-counter.vercel.app/ppppCounter?incrementValue=-3&type=20240308
 
 ### グラフURL
+
 
 https://pixe.la/v1/users/pppp-fan/graphs/popo-tsk-counter.svg
 
