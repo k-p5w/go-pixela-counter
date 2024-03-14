@@ -34,6 +34,7 @@ type GraphPutData struct {
 	Qty  string `json:"quantity"`
 }
 
+// putPoint is PUTする関数
 func putPoint(usr string, pwd string, url string, pointDATE string, pointQTY string) {
 	fmt.Println("start-putPoint.")
 
